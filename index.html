@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Covid 19 - Dashboard</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	
+	<link href="css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/c3.css">
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	crossorigin="" />
+	<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
+    <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			
+				<a class="navbar-brand" href="index.html"><span>COVID 19 </span>Tracker</a>
+				
+
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+
+		<div class="divider"></div>
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<div id="country">
+		</div>
+
+
+	</div>
+	<!--/.sidebar-->
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				
+				<li class="active" id="active-menu"><em class="fa fa-home"></em> <a href="index.html">Home</a></li>
+				<li id="active-menu"><em class="fa fa-table"></em> <a href="table.html">Table</a></li>
+			</ol>
+		</div>
+		<div class="row">
+			<div class="mobile-country col-md-12 col-sm-12" style="margin-bottom: 10px">
+			  <select id="countryMobile" class="form-control" name="countryMobile" onchange="console.log(this.value);countryDetail(this)">
+				
+			  </select>
+			</div>
+			
+		</div>
+		<!--/.row-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default"  style="margin-bottom: 0px; padding-bottom: 0px;">
+					
+					<div class="panel-body" style="margin: 0px; padding: 0px">
+						<div class="canvas-wrapper">
+							<div class="map">
+							   <div id="covid19-map" style="width: 100%; "></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header" id="page-header"></h1>
+			</div>
+		</div>
+	    -->
+		<!--/.row-->
+
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding">
+							<div id="cases" class="large" style="color: #DE3700">120</div>
+							<div class="text-muted">Confirmed Cases</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right" >
+						<div class="row no-padding">
+							<div id="active" class="large" style="color: #F4C363">52</div>
+							<div class="text-muted">Active Cases</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding">
+							<div id="recovered" class="large" style="color: #60BB69">24</div>
+							<div class="text-muted">Recovered Cases</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding">
+							<div id="deaths" class="large" style="color: #DE3700">25.2k</div>
+							<div class="text-muted">Deaths</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/.row-->
+		</div>
+
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div id="summary-title" class="panel-heading">
+						Global Summary
+						
+						</div>
+					<div class="panel-body timeline-container">
+						<div id="chart-summary"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+	
+
+
+			<div class="col-md-6">
+				<div class="panel panel-default ">
+					<div id="cases-title" class="panel-heading">
+						Global Confirmed Cases
+						
+						</div>
+					<div class="panel-body timeline-container">
+						<div id="case-chart"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default ">
+					<div id="recovered-title" class="panel-heading">
+						Global Recovered
+						
+						</div>
+					<div class="panel-body timeline-container">
+						<div id="case-recovered"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/.row-->
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default ">
+					<div id="deaths-title" class="panel-heading">
+						Global Deaths
+						
+						</div>
+					<div class="panel-body timeline-container">
+						<div id="case-death"></div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+				<div class="panel panel-default ">
+					<div id="summary-title2" class="panel-heading">
+						Global Summary
+						
+						</div>
+					<div class="panel-body timeline-container">
+						<div id="donut"></div>
+					</div>
+				</div>
+			</div>
+			<!--/.col-->
+			
+		</div>
+		<div class="row" >
+			<div class="col-md-6">
+				<div class="panel panel-default articles">
+					<div id="recovered-title" class="panel-heading">
+						Latest headline
+						
+						</div>
+					<div class="panel-body timeline-container" id="news">
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<p class="back-link">Developed by Yonas</p>
+			</div>
+		</div>
+	</div>
+	<!--/.main-->
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+	</script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<script src="js/custom.js"></script>
+	<script src="js/script.js"></script>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+	crossorigin=""></script>
+	 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		crossorigin=""></script>
+		<script src="js/d3.min.js"></script>
+		<script src="js/c3.min.js"></script>
+
+
+</body>
+
+</html>
