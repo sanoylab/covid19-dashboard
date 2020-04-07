@@ -76,7 +76,7 @@ apiCountryData().then(
                   </div>
                 </div>
             </div>`);
-            let parameter = `'${name.country}', '${name.deaths}', '${name.recovered}', '${name.active}', '${name.countryInfo.lat}', '${name.countryInfo.long}','${name.cases}','${name.countryInfo.flag}'`;
+            let parameter = `${name.country}, ${name.deaths}, ${name.recovered}, ${name.active}, ${name.countryInfo.lat}, ${name.countryInfo.long},${name.cases},${name.countryInfo.flag}`;
             $('#countryMobile').append(`
             <option value="${parameter.toString()}">${name.country}</option>
 				
@@ -95,7 +95,7 @@ apiCountryData().then(
         apiCountryMapData().then((res) => {
             
             let countries_data = res;
-            covidMap(countries_data,28.0339, 1.6596, 2);
+            covidMap(countries_data,6.6111, 20.9394, 1);
         });
 
     
@@ -130,6 +130,37 @@ apiCountryData().then(
 
         }).catch();
     }
+    //let countryDetailMobile = (countryName, death, recover, active_cases, lat, long,cases,flag) => {
+    let countryDetailMobile = (countryNameInfo) => {
+        let parameter= countryNameInfo.split(',');
+        console.log(parameter)
+        apiCountryMapData().then((res) => {
+            let countries_data = res;
+            let countryTitle = document.getElementById('countryName');
+            let countryDeaths = document.getElementById('death');
+            let countryRecovered = document.getElementById('recovered');
+            document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Home</a>`;
+            //document.getElementById('page-header').innerHTML = `<img src="${flag}" style="width: 70px; height: 70px; border-radius: 50%;"> ${countryName}`;
+            document.getElementById('cases').innerHTML = parameter[6].toString().replace(
+              /\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('deaths').innerHTML = parameter[1].toString().replace(
+                /\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('recovered').innerHTML = parameter[2].toString()
+                .replace(
+                    /\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('active').innerHTML = parameter[3].toString().replace(
+                /\B(?=(\d{3})+(?!\d))/g, ",");
+
+
+
+            covidMap(countries_data, parameter[4], parameter[5], 3);
+            donutChart(parameter[3], parameter[1], parameter[2], `${parameter[0]} Summary`)
+            getCountryChartData(parameter[0]);
+
+        }).catch();
+    }
+
+
 
     function onEachFeature(feature, layer) {
         layer.on('mouseover', function () {});
@@ -261,7 +292,7 @@ apiCountryData().then(
 									<div class="col-xs-12 col-md-2 date">
                                     <img src="${name.urlToImage}" alt="User Avatar" class="img-responsive" >
 									</div>
-									<div class="col-xs-10 col-md-10">
+									<div class="col-xs-12 col-md-10">
 										<h4><a href="${name.url}" target="_blank">${name.title}</a></h4>
 										<p>${name.description}</p>
       <a href="https://${name.source.name}" target="_blank" style="text-transform:uppercase;">${name.source.name}</a>

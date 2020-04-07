@@ -60,14 +60,15 @@
 		</div>
 		<div class="row">
 			<div class="mobile-country col-md-12 col-sm-12" style="margin-bottom: 10px">
-			  <select id="countryMobile" class="form-control" name="countryMobile" onchange="console.log(this.value);countryDetail(this)">
+			  <select id="countryMobile" class="form-control" name="countryMobile" onchange="countryDetailMobile(this.value)">
 				
 			  </select>
 			</div>
 			
 		</div>
 		<!--/.row-->
-		<div class="row">
+		<div class="mobile-switch">
+		<div class="row first">
 			<div class="col-md-12">
 				<div class="panel panel-default"  style="margin-bottom: 0px; padding-bottom: 0px;">
 					
@@ -81,16 +82,9 @@
 				</div>
 			</div>
 		</div>
-		<!--
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header" id="page-header"></h1>
-			</div>
-		</div>
-	    -->
-		<!--/.row-->
+		
 
-		<div class="panel panel-container">
+		<div class="panel panel-container second">
 			<div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
@@ -127,6 +121,7 @@
 			</div>
 			<!--/.row-->
 		</div>
+	</div>
 
 		<!--/.row-->
 

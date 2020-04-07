@@ -1183,6 +1183,16 @@ p.back-link {
   .mobile-country{
     display: block;
   }
+  .mobile-switch{
+    display: flex;
+    flex-direction: column;
+  }
+  .second{
+    order: 1;
+  }
+  .first{
+    order: 2
+  }
 }
 
 
