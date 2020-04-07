@@ -246,7 +246,7 @@ apiCountryData().then(
 
     let apiNewsData = async () => {
         let response = await fetch(
-            'http://newsapi.org/v2/top-headlines?language=en&q=covid-19&from=2020-03-07&sortBy=publishedAt&apiKey=af00c7eef7c74c9c9300434acb5e9159'); //api end point
+            'https://newsapi.org/v2/top-headlines?language=en&q=covid-19&from=2020-03-07&sortBy=publishedAt&apiKey=af00c7eef7c74c9c9300434acb5e9159'); //api end point
         return response.json();
     }
     apiNewsData().then((res) => {
