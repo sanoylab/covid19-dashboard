@@ -52,17 +52,17 @@ apiCountryData().then(
         <img class="img-responsive flag" style="width: 30px; height: 30px; margin-left: 10px; border-radius: 50%" src="${name.countryInfo.flag}"> 
         
         <b style="padding-top: 5px; padding-left: 10px;"> <a onClick="return CountryDetail('${name.countryInfo.flag}','${name.country}','${name.cases}','${name.active}','${name.recovered}','${name.deaths}','${name.todayCases}','${name.todayDeaths}','${name.tests}')">${name.country}</a></b></div></td>
-        <td style="padding-left: 5px;"><b>${name.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td style="padding-left: 5px;" ${checkColor(name.todayCases,"c")}><b>${Number(name.todayCases)>0?"+"+name.todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):""}</b></td>
-        <td style="padding-left: 5px;"><b>${name.deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td style="padding-left: 5px;"${checkColor(name.todayDeaths,"d")}><b>${Number(name.todayDeaths)>0?"+"+name.todayDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):""}</b></td>
-        <td style="padding-left: 5px;"><b>${name.recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td style="padding-left: 5px;"><b>${name.active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td style="padding-left: 5px;"><b>${name.critical.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td style="padding-left: 5px;"><b>${name.casesPerOneMillion ==null?"": name.casesPerOneMillion}</b></td>
-        <td style="padding-left: 5px;"><b>${name.deathsPerOneMillion== null? "": name.deathsPerOneMillion}</b></td>
-        <td style="padding-left: 5px;"><b>${name.tests.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td style="padding-left: 5px;"><b>${name.testsPerOneMillion ==null?"": name.casesPerOneMillion}</b></td>
+        <td><b>${name.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
+        <td ${checkColor(name.todayCases,"c")}><b>${Number(name.todayCases)>0?"+"+name.todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):""}</b></td>
+        <td><b>${name.deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
+        <td ${checkColor(name.todayDeaths,"d")}><b>${Number(name.todayDeaths)>0?"+"+name.todayDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):""}</b></td>
+        <td><b>${name.recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
+        <td><b>${name.active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
+        <td><b>${name.critical.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
+        <td><b>${name.casesPerOneMillion ==null?"": name.casesPerOneMillion}</b></td>
+        <td><b>${name.deathsPerOneMillion== null? "": name.deathsPerOneMillion}</b></td>
+        <td><b>${name.tests.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
+        <td><b>${name.testsPerOneMillion ==null?"": name.casesPerOneMillion}</b></td>
         
         </tr>`);
 
