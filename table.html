@@ -23,7 +23,11 @@
 			
                 <a class="navbar-brand" href="index.html"><span>COVID 19 </span>Tracker</a>
                
-				
+				<ul class="nav navbar-top-links navbar-right">
+					<li><a style="cursor: pointer;" id="am-btn">አማ</a></li>
+					<li> | </li>
+					<li><a style="cursor: pointer;"id="en-btn">EN</a></li>
+				</ul>
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -163,6 +167,7 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/jquery-cookie.js"></script>
 	<script>
 		window.onload = function () {
 	var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -183,5 +188,35 @@
 
   gtag('config', 'UA-51398316-2');
 </script>
+
+<script type="text/javascript">
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage: 'en',
+			layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 'google_translate_element');
+	}
+  </script>
+  <script type="text/javascript"
+	src="js/google-translate.js"></script>
+	<script>
+		 let btn = document.getElementById('am-btn');
+
+btn.addEventListener('click', ()=>{
+  console.log('clicked')
+   $.cookie('googtrans', '/en/am')
+   document.location = 'table.html'
+});
+
+let btnE = document.getElementById('en-btn');
+
+btnE.addEventListener('click', ()=>{
+  console.log('clicked')
+   $.cookie('googtrans', '/am/en')
+   document.location = 'table.html'
+});
+	</script>
+
+
 </body>
 </html>

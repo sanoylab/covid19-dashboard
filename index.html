@@ -29,7 +29,7 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 			
-				<a class="navbar-brand" href="index.html"><span>COVID 19 </span>Dashboard</a>
+				<a class="navbar-brand" href="index.html"><span>Covid19</span> Dashboard</a>
 				<ul class="nav navbar-top-links navbar-right">
 					<li><a style="cursor: pointer;" id="am-btn">አማ</a></li>
 					<li> | </li>
@@ -259,6 +259,23 @@
   </script>
   <script type="text/javascript"
 	src="js/google-translate.js"></script>
+	<script>
+		 let btn = document.getElementById('am-btn');
+
+btn.addEventListener('click', ()=>{
+  console.log('clicked')
+   $.cookie('googtrans', '/en/am')
+   document.location = 'index.html'
+});
+
+let btnE = document.getElementById('en-btn');
+
+btnE.addEventListener('click', ()=>{
+  console.log('clicked')
+   $.cookie('googtrans', '/am/en')
+   document.location = 'index.html'
+});
+	</script>
 </body>
 
 </html>
