@@ -49,9 +49,9 @@ apiCountryData().then(
         $('#country_list-table').append(`
         <tr style="cursor:pointer">
         <td style="text-align:left; color:#337ab7"><div style="display: flex;align-item: center;">
-        <img class="img-responsive flag" style="width: 30px; height: 30px; border-radius: 50%" src="${name.countryInfo.flag}"> 
+        <img class="img-responsive flag" style="width: 30px; height: 30px; margin-left: 10px; border-radius: 50%" src="${name.countryInfo.flag}"> 
         
-        <b><a onClick="return CountryDetail('${name.countryInfo.flag}','${name.country}','${name.cases}','${name.active}','${name.recovered}','${name.deaths}','${name.todayCases}','${name.todayDeaths}','${name.tests}')">${name.country}</a></b></div></td>
+        <b style="padding-top: 5px; padding-left: 10px;"> <a onClick="return CountryDetail('${name.countryInfo.flag}','${name.country}','${name.cases}','${name.active}','${name.recovered}','${name.deaths}','${name.todayCases}','${name.todayDeaths}','${name.tests}')">${name.country}</a></b></div></td>
         <td><b>${name.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
         <td ${checkColor(name.todayCases,"c")}><b>${Number(name.todayCases)>0?"+"+name.todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):""}</b></td>
         <td><b>${name.deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
