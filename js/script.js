@@ -416,8 +416,18 @@ apiCountryData().then(
 
 
     let barCharts = (chartCategory, chartValues, dom,backColor,title) => {
-        chartCategory = chartCategory.slice(Math.max(chartCategory.length - 15, 1))
-        chartValues = chartValues.slice(Math.max(chartValues.length - 15, 1))
+
+        var mediaWidth = window.matchMedia("(max-width: 600px)");
+        if (mediaWidth.matches) { // If media query matches
+            chartCategory = chartCategory.slice(Math.max(chartCategory.length - 5, 1))
+            chartValues = chartValues.slice(Math.max(chartValues.length - 5, 1))
+          } else {
+            chartCategory = chartCategory.slice(Math.max(chartCategory.length - 15, 1))
+            chartValues = chartValues.slice(Math.max(chartValues.length - 15, 1))
+          }
+
+
+       
        
         chartCategory.unshift('Case')
         chartValues.unshift(title)
@@ -427,11 +437,11 @@ apiCountryData().then(
                 x: 'Case',
                 columns: [chartCategory,chartValues],
                 type: 'bar',
-                labels:false/* {
+                labels: {
                     format: function (value, ratio, id) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     }
-                },*/
+                },
                 
             },
             
@@ -475,17 +485,32 @@ apiCountryData().then(
     }
 
     let lineCharts = (chartCategory, chartValues, dom) => {
-        
-        chartCategory = chartCategory.slice(Math.max(chartCategory.length - 15, 1))
-        
-        //chartValues = chartValues.slice(Math.max(chartValues.length - 10, 1))
         let value = []
-        chartValues.forEach((item, key)=>{
-            value.push(item.slice(Math.max(item.length - 16, 1)))
-        })
-        value[0].unshift('Confirmed');
-        value[1].unshift('Recovered');
-        value[2].unshift('Deaths');
+        var mediaWidth = window.matchMedia("(max-width: 600px)");
+        if (mediaWidth.matches) { 
+            chartCategory = chartCategory.slice(Math.max(chartCategory.length - 5, 1))       
+        
+            
+            chartValues.forEach((item, key)=>{
+                value.push(item.slice(Math.max(item.length - 5, 1)))
+            })
+            value[0].unshift('Confirmed');
+            value[1].unshift('Recovered');
+            value[2].unshift('Deaths');
+        }
+        else {
+            chartCategory = chartCategory.slice(Math.max(chartCategory.length - 15, 1))       
+        
+           
+            chartValues.forEach((item, key)=>{
+                value.push(item.slice(Math.max(item.length - 15, 1)))
+            })
+            value[0].unshift('Confirmed');
+            value[1].unshift('Recovered');
+            value[2].unshift('Deaths');
+
+        }
+
         var chart_bar = c3.generate({
             bindto: '#'+dom,
             data: {
@@ -526,6 +551,7 @@ apiCountryData().then(
                 left: 10,
                 right: 10
             },
+
            
         });
         d3.select(".c3-legend-item .c3-legend-item-2017 .c3-legend-item-2018 .c3-legend-item-2019"). style("float", "right").attr("transform", "translate(0,7)");
