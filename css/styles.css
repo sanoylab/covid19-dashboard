@@ -1262,11 +1262,11 @@ body{top: 0px !important}
 }
 
 input:checked + .slider {
-  background-color: #000;
+  background-color: #444444;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #000;
+  box-shadow: 0 0 1px #444444;
 }
 
 input:checked + .slider:before {
