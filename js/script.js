@@ -427,11 +427,11 @@ apiCountryData().then(
                 x: 'Case',
                 columns: [chartCategory,chartValues],
                 type: 'bar',
-                labels: {
+                labels:false/* {
                     format: function (value, ratio, id) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     }
-                },
+                },*/
                 
             },
             
@@ -492,11 +492,11 @@ apiCountryData().then(
                
                 columns: value,
                 type: 'area',
-                labels: {
+                labels:false,/* {
                     format: function (value, ratio, id) {
                         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     }
-                },
+                },*/
                                 type: 'area',
                 padding: {
                     left: 60,
