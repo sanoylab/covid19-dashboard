@@ -132,30 +132,40 @@ apiCountryData().then(
     }
     //let countryDetailMobile = (countryName, death, recover, active_cases, lat, long,cases,flag) => {
     let countryDetailMobile = (countryNameInfo) => {
-        let parameter= countryNameInfo.split(',');
-        console.log(parameter)
+        
+        
+        
         apiCountryMapData().then((res) => {
             let countries_data = res;
-            let countryTitle = document.getElementById('countryName');
-            let countryDeaths = document.getElementById('death');
-            let countryRecovered = document.getElementById('recovered');
-            document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Home</a>`;
-            //document.getElementById('page-header').innerHTML = `<img src="${flag}" style="width: 70px; height: 70px; border-radius: 50%;"> ${countryName}`;
-            document.getElementById('cases').innerHTML = parameter[6].toString().replace(
-              /\B(?=(\d{3})+(?!\d))/g, ",");
-            document.getElementById('deaths').innerHTML = parameter[1].toString().replace(
-                /\B(?=(\d{3})+(?!\d))/g, ",");
-            document.getElementById('recovered').innerHTML = parameter[2].toString()
-                .replace(
+            if(countryNameInfo === ""){
+                window.location.href = "index.html";
+
+            }
+            else{
+                let parameter= countryNameInfo.split(',');
+                let countryTitle = document.getElementById('countryName');
+                let countryDeaths = document.getElementById('death');
+                let countryRecovered = document.getElementById('recovered');
+                document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Home</a>`;
+                //document.getElementById('page-header').innerHTML = `<img src="${flag}" style="width: 70px; height: 70px; border-radius: 50%;"> ${countryName}`;
+                document.getElementById('cases').innerHTML = parameter[6].toString().replace(
+                  /\B(?=(\d{3})+(?!\d))/g, ",");
+                document.getElementById('deaths').innerHTML = parameter[1].toString().replace(
                     /\B(?=(\d{3})+(?!\d))/g, ",");
-            document.getElementById('active').innerHTML = parameter[3].toString().replace(
-                /\B(?=(\d{3})+(?!\d))/g, ",");
-
-
-
-            covidMap(countries_data, parameter[4], parameter[5], 3);
-            donutChart(parameter[3], parameter[1], parameter[2], `${parameter[0]} Summary`)
-            getCountryChartData(parameter[0]);
+                document.getElementById('recovered').innerHTML = parameter[2].toString()
+                    .replace(
+                        /\B(?=(\d{3})+(?!\d))/g, ",");
+                document.getElementById('active').innerHTML = parameter[3].toString().replace(
+                    /\B(?=(\d{3})+(?!\d))/g, ",");
+    
+    
+    
+                covidMap(countries_data, parameter[4], parameter[5], 3);
+                donutChart(parameter[3], parameter[1], parameter[2], `${parameter[0]} Summary`)
+                getCountryChartData(parameter[0]);
+            }
+            
+           
 
         }).catch();
     }
