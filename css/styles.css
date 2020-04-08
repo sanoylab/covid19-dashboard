@@ -1176,31 +1176,21 @@ p.back-link {
 
 
 
-@media only screen and (max-width: 600px) {
-  .panel-widget .large {
-  color: #373b45;
-  font-size: 2.3em; }
-  .mobile-country{
-    display: block;
-  }
-  .mobile-switch{
-    display: flex;
-    flex-direction: column;
-  }
-  .second{
-    order: 1;
-  }
-  .first{
-    order: 2
-  }
+
+
+
+
+
+.google-translate-container{
+  display: none !important;
 }
-
-
-
-
-
-
-
+.goog-te-banner-frame.skiptranslate{
+  display: none !important; 
+}
+.goog-tooltip.skiptranslate{
+  display:none !important;
+}
+body{top: 0px !important}
 
 .language_selector {
   width: 200px;
@@ -1230,6 +1220,35 @@ p.back-link {
 
 .languages > li:hover {
   background: #aaa;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .panel-widget .large {
+  color: #373b45;
+  font-size: 2.3em; }
+  .mobile-country{
+    display: block;
+  }
+  .mobile-switch{
+    display: flex;
+    flex-direction: column;
+  }
+  .second{
+    order: 1;
+  }
+  .first{
+    order: 2
+  }
 }
 
 

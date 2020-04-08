@@ -598,3 +598,20 @@ apiCountryData().then(
         });
 
     }
+
+    
+ let btn = document.getElementById('am-btn');
+
+ btn.addEventListener('click', ()=>{
+   console.log('clicked')
+    $.cookie('googtrans', '/en/am')
+    document.location = 'index.html'
+ });
+
+ let btnE = document.getElementById('en-btn');
+
+ btnE.addEventListener('click', ()=>{
+   console.log('clicked')
+    $.cookie('googtrans', '/am/en')
+    document.location = 'index.html'
+ });

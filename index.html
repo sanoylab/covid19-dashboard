@@ -30,7 +30,11 @@
 			<div class="navbar-header">
 			
 				<a class="navbar-brand" href="index.html"><span>COVID 19 </span>Dashboard</a>
-				
+				<ul class="nav navbar-top-links navbar-right">
+					<li><a style="cursor: pointer;" id="am-btn">አማ</a></li>
+					<li> | </li>
+					<li><a style="cursor: pointer;"id="en-btn">EN</a></li>
+				</ul>
 
 			</div>
 		</div><!-- /.container-fluid -->
@@ -235,7 +239,7 @@
 		crossorigin=""></script>
 		<script src="js/d3.min.js"></script>
 		<script src="js/c3.min.js"></script>
-
+		<script src="js/jquery-cookie.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51398316-2"></script>
 <script>
@@ -245,6 +249,16 @@
 
   gtag('config', 'UA-51398316-2');
 </script>
+<script type="text/javascript">
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage: 'en',
+			layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 'google_translate_element');
+	}
+  </script>
+  <script type="text/javascript"
+	src="js/google-translate.js"></script>
 </body>
 
 </html>
