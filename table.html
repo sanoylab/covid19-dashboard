@@ -51,7 +51,14 @@
 				
 				<li class="active" id="active-menu"><em class="fa fa-home"></em> <a href="index.html">Home</a></li>
 				<li id="active-menu"><em class="fa fa-table"></em> <a href="table.html">Tabular View</a></li>
+				<div style="justify-self: flex-end; align-self: center; float:right;margin-top:-5px;">
+					<label class="switch">
+						<input id="slider" type="checkbox" title="Dark Mode">
+						<span class="slider round"></span>
+					  </label>
+				</div>
 			</ol>
+			
 		</div><!--/.row-->
 		
 		
@@ -103,30 +110,7 @@
 				<div class="panel panel-default ">
 					<div class="panel-heading">
 						Tabular View
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-								<em class="fa fa-cogs"></em>
-							</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 1
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 2
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 3
-											</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+						</div>
 					<div class="panel-body timeline-container">
 						<table id="country_list-table"	class="fixed-table-container table-responsive table table-bordered">
 						<thead>

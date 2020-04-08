@@ -598,5 +598,50 @@ apiCountryData().then(
         });
 
     }
+    
+        let switcher = document.getElementById("slider");
+        window.addEventListener("load", ()=>{
+            console.log('hi')
+             if(localStorage.getItem('darkMode')=='true'){
+                     switcher.checked=true;
+                     localStorage.setItem('darkMode', 'true');
+                     darkMode();
+             } else{
+                localStorage.removeItem('darkMode');
+               darkMode(); 
+             }
+        });
+
+        
+       
+        switcher.addEventListener('change', ()=>{
+            if(switcher.checked){
+                localStorage.setItem('darkMode', 'true');
+                darkMode();
+            }
+            else {
+               localStorage.removeItem('darkMode');
+               darkMode();
+            }
+        }) 
+
+        let darkMode = () =>{
+            if(localStorage.getItem('darkMode')=='true'){
+                $("<link/>", {
+                    rel: "stylesheet",
+                    type: "text/css",
+                    href: "./css/darkmode.css",
+                    title: "underline"
+                  }).appendTo("head");
+            } else {
+                removeDarkMode();
+            }
+
+        }
+
+        let removeDarkMode = () =>{
+            $('link[href="./css/darkmode.css"]').remove();
+        }
+ 
 
     

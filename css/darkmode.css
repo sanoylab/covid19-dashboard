@@ -1,0 +1,38 @@
+img {
+   
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);  
+}
+.header{
+    background-color: #444444 !important;
+    color: white !important;
+}
+a{
+    background-color: #444444 !important;
+    color: white !important;
+}
+#body, #sidebar-collapse, .areas, .panel-body, .panel-heading, .row, .breadcrumb, .area, .panel-container, #country_list-table thead tr th {
+    background-color: #444444 !important;
+    color: white !important;
+}
+.navbar{
+    background-color: #444444 !important;
+    color: white !important;
+}
+body{
+    background-color: #444444 !important;
+    color: white !important;
+}
+.form-group{
+    display:none;
+}
+.canvas-wrapper{
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);  
+}
+.slider:before {
+    background: #444444 !important;
+}
+.slider {
+    background-color: #fff !important;
+  }
