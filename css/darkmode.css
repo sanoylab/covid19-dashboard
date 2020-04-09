@@ -2,25 +2,26 @@ img {
    
     -webkit-filter: grayscale(100%); 
     filter: grayscale(100%);  
+    background:#1E1E1E !important;;
 }
 .header{
-    background-color: #444444 !important;
+    background-color: #1E1E1E !important;
     color: white !important;
 }
 a{
-    background-color: #444444 !important;
+    background-color: #1E1E1E !important;
     color: white !important;
 }
 #body, #sidebar-collapse, .areas, .panel-body, .panel-heading, .row, .breadcrumb, .area, .panel-container, #country_list-table thead tr th {
-    background-color: #444444 !important;
+    background-color: #1E1E1E !important;
     color: white !important;
 }
 .navbar{
-    background-color: #444444 !important;
+    background-color: #1E1E1E !important;
     color: white !important;
 }
 body{
-    background-color: #444444 !important;
+    background-color: #1E1E1E !important;
     color: white !important;
 }
 .form-group{
@@ -29,10 +30,15 @@ body{
 .canvas-wrapper{
     -webkit-filter: grayscale(100%); 
     filter: grayscale(100%);  
+    
 }
 .slider:before {
-    background: #444444 !important;
+    background: #1E1E1E !important;
 }
 .slider {
     background-color: #fff !important;
   }
+  .leaflet-container {
+    background: #1E1E1E !important;
+    outline: 0;
+}

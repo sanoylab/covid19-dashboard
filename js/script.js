@@ -78,7 +78,7 @@ apiCountryData().then(
             </div>`);
             let parameter = `${name.country}, ${name.deaths}, ${name.recovered}, ${name.active}, ${name.countryInfo.lat}, ${name.countryInfo.long},${name.cases},${name.countryInfo.flag}`;
             $('#countryMobile').append(`
-            <option value="${parameter.toString()}">${name.country}</option>
+            <option style="background-image: url('${name.countryInfo.flag}');" value="${parameter.toString()}">${name.country}</option>
 				
             `);
 
