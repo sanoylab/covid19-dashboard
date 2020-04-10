@@ -6,7 +6,7 @@ https://covid19-dashboard-viz.herokuapp.com/
 
 I also created another tracker application, you can acces it on https://simple-covid19-tracker.herokuapp.com/
 
-![alt text](https://covid19-dashboard-viz.herokuapp.com//screenshot.PNG)
+![alt text](https://covid19-dashboard-viz.herokuapp.com/screenshot.png)
 
 Data used from Rapid API 
 https://corona.lmao.ninja/countries?sort=cases
