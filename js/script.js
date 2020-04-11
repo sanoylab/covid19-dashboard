@@ -122,7 +122,7 @@ console.log(flag)
             document.getElementById('active').innerHTML = active_cases.toString().replace(
                 /\B(?=(\d{3})+(?!\d))/g, ",");
 
-            document.getElementById('countryNameTitle').innerHTML = `<img src="${flag}" style="width: auto; height: 25px;"> ${countryName}`;
+            document.getElementById('countryNameTitle').innerHTML = `<img src="${flag}" style="width: 25px; height: 25px; border-radius: 50%"> ${countryName}`;
 
             covidMap(countries_data, lat, long, 3);
             donutChart(active_cases, death, recover, `${countryName} Summary`)
@@ -133,7 +133,7 @@ console.log(flag)
     //let countryDetailMobile = (countryName, death, recover, active_cases, lat, long,cases,flag) => {
     let countryDetailMobile = (countryNameInfo) => {
         
-        
+        console.log(countryNameInfo);
         
         apiCountryMapData().then((res) => {
             let countries_data = res;
@@ -158,7 +158,8 @@ console.log(flag)
                 document.getElementById('active').innerHTML = parameter[3].toString().replace(
                     /\B(?=(\d{3})+(?!\d))/g, ",");
     
-    
+                    document.getElementById('countryNameTitle').innerHTML = `<img src="${parameter[7].toString()}" style="width: 25px; height: 25px; border-radius: 50%"> ${parameter[0].toString()}`;
+
     
                 covidMap(countries_data, parameter[4], parameter[5], 3);
                 donutChart(parameter[3], parameter[1], parameter[2], `${parameter[0]} Summary`)
