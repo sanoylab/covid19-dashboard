@@ -104,7 +104,7 @@ apiCountryData().then(
     }).catch()
 
     let countryDetail = (countryName, death, recover, active_cases, lat, long,cases,flag) => {
-
+console.log(flag)
         apiCountryMapData().then((res) => {
             let countries_data = res;
             let countryTitle = document.getElementById('countryName');
@@ -122,7 +122,7 @@ apiCountryData().then(
             document.getElementById('active').innerHTML = active_cases.toString().replace(
                 /\B(?=(\d{3})+(?!\d))/g, ",");
 
-
+            document.getElementById('countryNameTitle').innerHTML = `<img src="${flag}" style="width: auto; height: 25px;"> ${countryName}`;
 
             covidMap(countries_data, lat, long, 3);
             donutChart(active_cases, death, recover, `${countryName} Summary`)
