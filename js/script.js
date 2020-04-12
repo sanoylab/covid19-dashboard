@@ -110,7 +110,7 @@ console.log(flag)
             let countryTitle = document.getElementById('countryName');
             let countryDeaths = document.getElementById('death');
             let countryRecovered = document.getElementById('recovered');
-            document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Home</a>`;
+            document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Global</a>`;
             //document.getElementById('page-header').innerHTML = `<img src="${flag}" style="width: 70px; height: 70px; border-radius: 50%;"> ${countryName}`;
             document.getElementById('cases').innerHTML = cases.toString().replace(
               /\B(?=(\d{3})+(?!\d))/g, ",");
@@ -146,7 +146,7 @@ console.log(flag)
                 let countryTitle = document.getElementById('countryName');
                 let countryDeaths = document.getElementById('death');
                 let countryRecovered = document.getElementById('recovered');
-                document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Home</a>`;
+                document.getElementById('active-menu').innerHTML = `<em class="fa fa-home"></em> <a href="index.html">Global</a>`;
                 //document.getElementById('page-header').innerHTML = `<img src="${flag}" style="width: 70px; height: 70px; border-radius: 50%;"> ${countryName}`;
                 document.getElementById('cases').innerHTML = parameter[6].toString().replace(
                   /\B(?=(\d{3})+(?!\d))/g, ",");
