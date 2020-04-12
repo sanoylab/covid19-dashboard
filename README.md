@@ -8,8 +8,10 @@ I also created another tracker application, you can acces it on https://simple-c
 
 ![alt text](https://covid19-dashboard-viz.herokuapp.com/screenshot.png)
 
-Data used from Rapid API 
+API Used: 
+
 https://corona.lmao.ninja/countries?sort=cases
+
 https://corona.lmao.ninja/v2/jhucsse/
 
 ## Contributing
