@@ -139,6 +139,45 @@
 			</div>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="detailView"
+	aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header"style="display: flex;">
+				<h5 style="flex: 4" class="modal-title" id="exampleModalLongTitle"> <div style="display: flex;"><img src="" style="width: 100px;" id="flag" />
+					 &nbsp;<h1 id="country-detail"></h1></div>
+				</h5>
+				<button style="flex: 1"type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true" style="font-size: 47px;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h1 id="country-detail">
+					<h1>
+						<div class="infoTile">
+							<h2 class="title" title="Total Confirmed Cases">Coronavirus Cases:</h2>
+							<div id="totalCase-detail" class="confirmed" style="color:#aaa"></div><br>
+							<h2 class="title" title="Total Confirmed Cases">Active Cases</h2>
+							<div id="active-detail" class="confirmed" style="color: rgb(244, 195, 99)">
+								799,419</div><br>
+							<h2 class="title" title="Total Confirmed Cases">Recovered Cases</h2>
+							<div id="recovered-detail" class="confirmed" style="color: green;">225,422
+							</div><br>
+							<h2 class="title" title="Total Confirmed Cases">Death</h2>
+							<div id="death-detail" class="confirmed" style="color: #DE3700">58,243</div><br>
+							<h2 class="title" title="Total Confirmed Cases">New Cases</h2>
+							<div id="newCase-detail" class="confirmed" style="color:#aaa">58,243</div>
+							<br>
+							<h2 class="title" title="Total Confirmed Cases">New Death</h2>
+							<div id="newDeath-detail" class="confirmed" style="color: #DE3700">58,243</div><br>
+							<h2 class="title" title="Total Confirmed Cases">Total Test</h2>
+							<div id="totalTest-detail" class="confirmed" style="color:#aaa">58,243</div>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
 	
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

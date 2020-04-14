@@ -51,7 +51,7 @@ apiCountryData().then(
         <td style="text-align:left; color:#337ab7"><div style="display: flex;align-item: center;">
         <img class="img-responsive flag" style="width: 30px; height: 30px; margin-left: 10px; border-radius: 50%" src="${name.countryInfo.flag}"> 
         
-        <b style="padding-top: 5px; padding-left: 10px;"> <a onClick="return CountryDetail('${name.countryInfo.flag}','${name.country}','${name.cases}','${name.active}','${name.recovered}','${name.deaths}','${name.todayCases}','${name.todayDeaths}','${name.tests}')">${name.country}</a></b></div></td>
+        <b style="padding-top: 5px; padding-left: 10px;"> <a onClick="return tableDetail('${name.countryInfo.flag}','${name.country}','${name.cases}','${name.active}','${name.recovered}','${name.deaths}','${name.todayCases}','${name.todayDeaths}','${name.tests}')">${name.country}</a></b></div></td>
         <td><b>${name.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
         <td ${checkColor(name.todayCases,"c")}><b>${Number(name.todayCases)>0?"+"+name.todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):""}</b></td>
         <td><b>${name.deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
@@ -171,7 +171,30 @@ console.log(flag)
         }).catch();
     }
 
+    let tableDetail = (flag, country, totalCase, active, recovered, death, newCase, newDeath,
+        totalTest) => {
 
+        $('#detailView').modal('toggle');
+
+        document.getElementById("flag").src = flag;
+        let countryDetail = document.getElementById('country-detail');
+        let totalCaseDetail = document.getElementById('totalCase-detail');
+        let activeDetail = document.getElementById('active-detail');
+        let recoveredDetail = document.getElementById('recovered-detail');
+        let deathDetail = document.getElementById('death-detail');
+        let newCaseDetail = document.getElementById('newCase-detail');
+        let newDeathDetail = document.getElementById('newDeath-detail');
+        let totalTestDetail = document.getElementById('totalTest-detail');
+        countryDetail.textContent = country;
+        totalCaseDetail.textContent = totalCase.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        activeDetail.textContent = active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        recoveredDetail.textContent = recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        deathDetail.textContent = death.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        newCaseDetail.textContent = "+" + newCase.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        newDeathDetail.textContent = "+" + newDeath.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        totalTestDetail.textContent = totalTest.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    }
 
     function onEachFeature(feature, layer) {
         layer.on('mouseover', function () {});
