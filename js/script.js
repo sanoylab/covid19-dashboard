@@ -357,7 +357,7 @@ console.log(flag)
 
     let apiHistoricalData = async () => {
         let response = await fetch(
-            'https://corona.lmao.ninja/v2/v2/historical/all?lastdays=10'); //api end point
+            'https://corona.lmao.ninja/v2/historical/all?lastdays=10'); //api end point
         return response.json();
     }
 
@@ -407,7 +407,7 @@ console.log(flag)
 
     let apiHistoricalCountryData = async () => {
         let response = await fetch(
-            'https://corona.lmao.ninja/v2/v2/historical/'+country+'?lastdays=60'); //api end point
+            'https://corona.lmao.ninja/v2/historical/'+country+'?lastdays=60'); //api end point
         return response.json();
     }
 
