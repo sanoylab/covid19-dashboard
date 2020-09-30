@@ -321,13 +321,10 @@ console.log(flag)
     let apiNewsData = async () => {
         let response = await fetch(
             'https://newsapi.org/v2/top-headlines?language=en&q=covid-19&sortBy=publishedAt&apiKey=af00c7eef7c74c9c9300434acb5e9159'); //api end point
-        return response.json();
-    }
-    apiNewsData().then((res) => {
-        let news_data = res;
-       news_data.articles.length =10;  
-        news_data.articles.forEach(function (name) {
-  $("#news").append(`
+            const data  = await response.json();
+            console.log(data)
+            data.articles.forEach((name)=>{
+                $("#news").append(`
  
   <div class="article border-bottom">
 							<div class="col-xs-12">
@@ -344,25 +341,17 @@ console.log(flag)
 							</div>
 							<div class="clear"></div>
                         </div>
-                        
-
-
-
-
-
-        
- 
-                            
-
 
         `);
-
-        });
-      
+            });
+        //return response.json();
+    }
+    
+    apiNewsData(); 
 
 
        
-    }).catch()
+   
 
     let apiHistoricalData = async () => {
         let response = await fetch(
