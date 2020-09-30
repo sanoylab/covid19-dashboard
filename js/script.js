@@ -319,39 +319,49 @@ console.log(flag)
     }
 
     let apiNewsData = async () => {
-        let response = await fetch(
-            'https://newsapi.org/v2/top-headlines?language=en&q=covid-19&sortBy=publishedAt&apiKey=af00c7eef7c74c9c9300434acb5e9159'); //api end point
-            const data  = await response.json();
-            console.log(data)
-            data.articles.forEach((name)=>{
-                $("#news").append(`
+        let response = await fetch("https://newscatcher.p.rapidapi.com/v1/search?media=True&sort_by=relevancy&lang=en&page=1&q=covid-19", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+                "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0"
+            }
+        }); //api end point
+        return response.json();
+    }
+    apiNewsData().then((res) => {
+        let news_data = res;
+     
+        news_data.articles.forEach(function (name) {
+  $("#news").append(`
+
+  <div class=" col-xs-12 col-sm-6 col-md-2 col-lg-2">
+        <div class="thumbnail">
+           <img src="${name.media}" alt="User Avatar" class="img-responsive" >
+           <h4><a href="${name.link}" target="_blank">${name.title}</a></h4>
+           <p>${name.summary}</p>
+           <a href="https://${name.rights}" target="_blank" style="text-transform:uppercase;">${name.clean_url}</a>
+        </div>
+  </div>
+
+
  
-  <div class="article border-bottom">
-							<div class="col-xs-12">
-								<div class="row">
-									<div class="col-xs-12 col-md-2 date">
-                                    <img src="${name.urlToImage}" alt="User Avatar" class="img-responsive" >
-									</div>
-									<div class="col-xs-12 col-md-10">
-										<h4><a href="${name.url}" target="_blank">${name.title}</a></h4>
-										<p>${name.description}</p>
-      <a href="https://${name.source.name}" target="_blank" style="text-transform:uppercase;">${name.source.name}</a>
-									</div>
-								</div>
-							</div>
-							<div class="clear"></div>
-                        </div>
+
+
+
+
+        
+ 
+                            
+
 
         `);
-            });
-        //return response.json();
-    }
-    
-    apiNewsData(); 
+
+        });
+      
 
 
        
-   
+    }).catch()
 
     let apiHistoricalData = async () => {
         let response = await fetch(
