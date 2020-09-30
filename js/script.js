@@ -95,7 +95,7 @@ apiCountryData().then(
         apiCountryMapData().then((res) => {
             
             let countries_data = res;
-            covidMap(countries_data,6.6111, 20.9394, 1);
+            covidMap(countries_data,6.6111, 20.9394, 2);
         });
 
     
@@ -297,13 +297,13 @@ console.log(flag)
 
     let calculateRadius = (radius) => {
         if ((radius) / 1000 > 20) {
-            return 25;
-        } else if ((radius) / 1000 > 10 && (radius) / 1000 < 20) {
-            return 15;
-        } else if ((radius) / 1000 > 5 && (radius) / 1000 < 10) {
             return 10;
-        } else if ((radius) / 1000 < 5) {
+        } else if ((radius) / 1000 > 10 && (radius) / 1000 < 20) {
+            return 7;
+        } else if ((radius) / 1000 > 5 && (radius) / 1000 < 10) {
             return 5;
+        } else if ((radius) / 1000 < 5) {
+            return 2;
         } else {
             return (radius) / 1000;
         }
