@@ -296,12 +296,21 @@ console.log(flag)
     }
 
     let calculateRadius = (radius) => {
-        if ((radius) / 1000 > 20) {
+        
+        if ((radius) / 1000 > 350) {
+            return 20;
+        }else if ((radius) / 1000 > 160) {
+            return 15;
+        }
+        else if ((radius) / 1000 > 30) {
             return 10;
+        }
+        else if ((radius) / 1000 > 20) {
+            return 8;
         } else if ((radius) / 1000 > 10 && (radius) / 1000 < 20) {
-            return 7;
+            return 6;
         } else if ((radius) / 1000 > 5 && (radius) / 1000 < 10) {
-            return 5;
+            return 4;
         } else if ((radius) / 1000 < 5) {
             return 2;
         } else {
