@@ -334,14 +334,15 @@ console.log(flag)
         news_data.articles.forEach(function (name) {
   $("#news").append(`
 
-  <div class=" col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <div class="thumbnail">
-           <img src="${name.media}" alt="User Avatar" class="img-responsive" >
-           <h4><a href="${name.link}" target="_blank">${name.title}</a></h4>
-           <p>${name.summary.substring(0, 50)}...</p>
-           <a href="https://${name.rights}" target="_blank" style="text-transform:uppercase;">${name.clean_url}</a>
+  <div class="row">
+        <div class="col-md-12">
+            <img style='float:left;width:200px;height:200px; margin-right:10px;' src="${name.media}" />
+            <p> <h4><a href="${name.link}" target="_blank">${name.title}</a></h4><br>
+            ${name.summary.substring(0, 50)}...</p>
         </div>
-  </div>
+    </div>
+
+
 
 
  
