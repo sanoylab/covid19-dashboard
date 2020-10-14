@@ -336,11 +336,12 @@ console.log(flag)
 
   <div class="row">
         <div class="col-md-12">
-            <img style='float:left;width:200px;height:200px; margin-right:10px;' src="${name.media}" />
-            <p> <h4><a href="${name.link}" target="_blank">${name.title}</a></h4><br>
-            ${name.summary.substring(0, 50)}...</p>
+            <img style='float:left;width:200px;height:200px; margin-right:10px; border-radius: 50%' src="${name.media}" />
+            <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
+            ${name.summary}...</p>
         </div>
     </div>
+    <div class="row">&nbsp;</div>
 
 
 
