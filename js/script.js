@@ -1,7 +1,7 @@
 
  let apiGlobalData = async () => {
     let response = await fetch(
-        'https://corona.lmao.ninja/v2/all'); //api end point
+        'https://disease.sh/v3/covid-19/all'); //api end point
     return response.json();
 }
 apiGlobalData().then((res) => {
@@ -29,12 +29,12 @@ let checkColor = (num, type) => {
 }
 let apiCountryData = async () => {
     let response = await fetch(
-        'https://corona.lmao.ninja/v2/countries?sort=cases'); //api end point
+        'https://disease.sh/v3/covid-19/countries?sort=cases'); //api end point
     return response.json();
 }
 let apiCountryMapData = async () => {
     let response = await fetch(
-        'https://corona.lmao.ninja/v2/jhucsse/'); //api end point
+        'https://disease.sh/v3/covid-19/jhucsse'); //api end point
         return response.json();
 }
 apiCountryData().then(
@@ -323,7 +323,7 @@ console.log(flag)
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-                "x-rapidapi-key": "API KEY"
+                "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0"//
             }
         }); //api end point
         return response.json();
@@ -367,7 +367,7 @@ console.log(flag)
 
     let apiHistoricalData = async () => {
         let response = await fetch(
-            'https://corona.lmao.ninja/v2/historical/all?lastdays=30'); //api end point
+            'https://disease.sh/v3/covid-19/historical/all?lastdays=30'); //api end point
         return response.json();
     }
 
@@ -417,7 +417,7 @@ console.log(flag)
 
     let apiHistoricalCountryData = async () => {
         let response = await fetch(
-            'https://corona.lmao.ninja/v2/historical/'+country+'?lastdays=60'); //api end point
+            'https://disease.sh/v3/covid-19/historical'+country+'?lastdays=60'); //api end point
         return response.json();
     }
 
