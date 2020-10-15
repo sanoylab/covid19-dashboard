@@ -323,7 +323,7 @@ console.log(flag)
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-                "x-rapidapi-key": "API KEY"//
+                "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0"//
             }
         }); //api end point
         return response.json();
@@ -336,7 +336,7 @@ console.log(flag)
 
   <div class="row">
         <div class="col-md-12">
-            <img style='float:left;width:200px;height:200px; margin-right:10px; border: 10px solid #ccc; border-radius: 50%' src="${name.media}" />
+            <img style='float:left;width:200px;height:200px; margin-right:10px; border: 10px solid #ccc;border-radius: 50%' src="${name.media}" />
             <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
             ${name.summary}...</p>
         </div>

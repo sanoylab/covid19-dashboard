@@ -7,7 +7,7 @@
 	<title>Covid 19 - Dashboard</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
-	
+
 	<link href="css/styles.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/c3.css">
 	<!--Custom Font-->
@@ -18,28 +18,30 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-	crossorigin="" />
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin="" />
 	<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
-    <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+	<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
 </head>
 
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-			
+
 				<a class="navbar-brand" href="index.html"><span>Covid19</span> Dashboard</a>
+				<button class="btn btn-lg" style="margin-top: 7px;" data-toggle="modal"
+					data-target="#modalVaccine">Vaccine Information</button>
 				<ul class="nav navbar-top-links navbar-right">
 					<li><a style="cursor: pointer;" id="am-btn">አማርኛ</a></li>
 					<li> | </li>
-					<li><a style="cursor: pointer;"id="en-btn">EN</a></li>
+					<li><a style="cursor: pointer;" id="en-btn">EN</a></li>
 				</ul>
 
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
-	
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
 		<div class="divider"></div>
@@ -58,84 +60,86 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				
+
 				<li class="active" id="active-menu"><em class="fa fa-home"></em> <a href="index.html">Global</a></li>
 				<li><span id="countryNameTitle"></span></li>
-				
+
 				<div style="display: flex;justify-self: flex-end; align-self: center; float:right;margin-top:-5px;">
-					<li style="align-self: center;" id="active-menu"><em class="fa fa-table"></em> <a href="table.html">Tabular View</a>&nbsp; </li>
+					<li style="align-self: center;" id="active-menu"><em class="fa fa-table"></em> <a
+							href="table.html">Tabular View</a>&nbsp; </li>
 					<label class="switch">
 						<input id="slider" type="checkbox" title="Dark Mode">
 						<span class="slider round"></span>
-					  </label>
+					</label>
 				</div>
 			</ol>
 		</div>
 		<div class="row">
 			<div class="mobile-country col-md-12 col-sm-12" style="margin-bottom: 10px">
-			  <select id="countryMobile" class="form-control" name="countryMobile" onchange="countryDetailMobile(this.value)">
-				<option value="">Filter to a location</option>
-				
-			  </select>
+				<select id="countryMobile" class="form-control" name="countryMobile"
+					onchange="countryDetailMobile(this.value)">
+					<option value="">Filter to a location</option>
+
+				</select>
 			</div>
-			
+
 		</div>
 		<!--/.row-->
 		<div class="mobile-switch">
-		<div class="row first">
-			<div class="col-md-12">
-				<div class="panel panel-default"  style="margin-bottom: 0px; padding-bottom: 0px;">
-					
-					<div class="panel-body" style="margin: 0px; padding: 0px">
-						<div class="canvas-wrapper">
-							<div class="map">
-							   <div id="covid19-map" style="width: 100%; "></div>
+			<div class="row first">
+				<div class="col-md-12">
+					<div class="panel panel-default" style="margin-bottom: 0px; padding-bottom: 0px;">
+
+						<div class="panel-body" style="margin: 0px; padding: 0px">
+							<div class="canvas-wrapper">
+								<div class="map">
+									<div id="covid19-map" style="width: 100%; "></div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		
 
-		<div class="panel panel-container second">
-			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding">
-							<div id="cases" class="large" style="color: #DE3700"></div>
-							<div class="text-muted">Confirmed Cases</div>
+
+			<div class="panel panel-container second">
+				<div class="row">
+					<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+						<div class="panel panel-teal panel-widget border-right">
+							<div class="row no-padding">
+								<div id="cases" class="large" style="color: #DE3700"></div>
+								<div class="text-muted">Confirmed Cases</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+						<div class="panel panel-blue panel-widget border-right">
+							<div class="row no-padding">
+								<div id="active" class="large" style="color: #F4C363"></div>
+								<div class="text-muted">Active Cases</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+						<div class="panel panel-orange panel-widget border-right">
+							<div class="row no-padding">
+								<div id="recovered" class="large" style="color: #60BB69"></div>
+								<div class="text-muted">Recovered Cases</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+						<div class="panel panel-red panel-widget ">
+							<div class="row no-padding">
+								<div id="deaths" class="large" style="color: #DE3700"></div>
+								<div class="text-muted">Deaths</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right" >
-						<div class="row no-padding">
-							<div id="active" class="large" style="color: #F4C363"></div>
-							<div class="text-muted">Active Cases</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding">
-							<div id="recovered" class="large" style="color: #60BB69"></div>
-							<div class="text-muted">Recovered Cases</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding">
-							<div id="deaths" class="large" style="color: #DE3700"></div>
-							<div class="text-muted">Deaths</div>
-						</div>
-					</div>
-				</div>
+				<!--/.row-->
 			</div>
-			<!--/.row-->
 		</div>
-	</div>
 
 		<!--/.row-->
 
@@ -144,8 +148,8 @@
 				<div class="panel panel-default">
 					<div id="summary-title" class="panel-heading">
 						Global Summary
-						
-						</div>
+
+					</div>
 					<div class="panel-body timeline-container">
 						<div id="chart-summary"></div>
 					</div>
@@ -155,15 +159,15 @@
 		<!--/.row-->
 
 		<div class="row">
-	
+
 
 
 			<div class="col-md-6">
 				<div class="panel panel-default ">
 					<div id="cases-title" class="panel-heading">
 						Global Confirmed Cases
-						
-						</div>
+
+					</div>
 					<div class="panel-body timeline-container">
 						<div id="case-chart"></div>
 					</div>
@@ -173,8 +177,8 @@
 				<div class="panel panel-default ">
 					<div id="recovered-title" class="panel-heading">
 						Global Recovered
-						
-						</div>
+
+					</div>
 					<div class="panel-body timeline-container">
 						<div id="case-recovered"></div>
 					</div>
@@ -188,8 +192,8 @@
 				<div class="panel panel-default ">
 					<div id="deaths-title" class="panel-heading">
 						Global Deaths
-						
-						</div>
+
+					</div>
 					<div class="panel-body timeline-container">
 						<div id="case-death"></div>
 					</div>
@@ -201,29 +205,29 @@
 				<div class="panel panel-default ">
 					<div id="summary-title2" class="panel-heading">
 						Global Summary
-						
-						</div>
+
+					</div>
 					<div class="panel-body timeline-container">
 						<div id="donut"></div>
 					</div>
 				</div>
 			</div>
 			<!--/.col-->
-			
+
 		</div>
-		<div class="row" >
+		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default articles">
 					<div id="recovered-title" class="panel-heading">
 						Latest headline
-						
-						</div>
-					
+
+					</div>
+
 					<div class="panel-body timeline-container">
-						 <div id="news" class="col-md-12">
+						<div id="news" class="col-md-12">
 
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -235,59 +239,125 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="modalVaccine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Vaccine Information</h4>
+				</div>
+				<div class="modal-body">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						
+						
+						
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--/.main-->
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>
 	<script src="js/bootstrap.min.js"></script>
-	
-	
+
+
 	<script src="js/script.js"></script>
 	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-	integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-	crossorigin=""></script>
-	 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 		crossorigin=""></script>
-		<script src="js/d3.min.js"></script>
-		<script src="js/c3.min.js"></script>
-		<script src="js/jquery-cookie.js"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51398316-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-51398316-2');
-</script>
-<script type="text/javascript">
-	function googleTranslateElementInit() {
-		new google.translate.TranslateElement({
-			pageLanguage: 'en',
-			layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-		}, 'google_translate_element');
-	}
-  </script>
-  <script type="text/javascript"
-	src="js/google-translate.js"></script>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		crossorigin=""></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/c3.min.js"></script>
+	<script src="js/jquery-cookie.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51398316-2"></script>
 	<script>
-		 let btn = document.getElementById('am-btn');
+		window.dataLayer = window.dataLayer || [];
 
-btn.addEventListener('click', ()=>{
-  console.log('clicked')
-   $.cookie('googtrans', '/en/am')
-   document.location = 'index.html'
-});
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
 
-let btnE = document.getElementById('en-btn');
+		gtag('config', 'UA-51398316-2');
+	</script>
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement({
+				pageLanguage: 'en',
+				layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+			}, 'google_translate_element');
+		}
+	</script>
+	<script type="text/javascript" src="js/google-translate.js"></script>
+	<script>
+		let btn = document.getElementById('am-btn');
 
-btnE.addEventListener('click', ()=>{
-  console.log('clicked')
-   $.cookie('googtrans', '/am/en')
-   document.location = 'index.html'
-});
+		btn.addEventListener('click', () => {
+			console.log('clicked')
+			$.cookie('googtrans', '/en/am')
+			document.location = 'index.html'
+		});
+
+		let btnE = document.getElementById('en-btn');
+
+		btnE.addEventListener('click', () => {
+			console.log('clicked')
+			$.cookie('googtrans', '/am/en')
+			document.location = 'index.html'
+		});
+	</script>
+	<script>
+		const getVaccineInformation = async ()=>{
+			const response = await fetch('https://disease.sh/v3/covid-19/vaccine');
+			const data = await response.json();
+			console.log(data.data)
+			let vaccineHTML = ``;
+			data.data.forEach((item,index)=>{
+				 vaccineHTML += `
+			<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingOne`+index+`">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne`+index+`"
+										aria-expanded="true" aria-controls="collapseOne`+index+`">
+										<b style="color: #3331A9">${item.candidate} (${item.mechanism})</b>
+									</a>
+								</h4>
+							</div>
+							<div id="collapseOne`+index+`" class="panel-collapse collapse " role="tabpanel"
+								aria-labelledby="headingOne`+index+`">
+								<div class="panel-body">
+									<table>
+										<tr><td colspan="2"><p>${item.details}</p></td></tr>
+										<tr><td><b>Institutions:</b> </td><td>${item.institutions}</td></tr>
+										<tr><td><b>Mechanism:</b> </td><td>${item.mechanism}</td></tr>
+										<tr><td><b>Sponsors:</b> </td><td>${item.sponsors}</td></tr>
+										<tr><td><b>Trail Phase:</b> </td><td>${item.trialPhase}</td></tr>
+								   </table>
+								</div>
+							</div>
+						</div>
+			
+			
+			`;
+
+			const accordion = document.getElementById('accordion');
+			accordion.innerHTML = vaccineHTML;
+			})
+			
+		}	
+		getVaccineInformation();	
 	</script>
 </body>
 
