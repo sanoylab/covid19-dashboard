@@ -323,7 +323,7 @@ console.log(flag)
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-                "x-rapidapi-key": "API KEY"//
+                "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0"//
             }
         }); //api end point
         return response.json();
@@ -332,31 +332,32 @@ console.log(flag)
         let news_data = res;
      
         news_data.articles.forEach(function (name) {
-  $("#news").append(`
+            if(name.media){
+                $("#news").append(`
 
-  <div class="row">
-        <div class="col-md-12">
-            <img style='float:left;width:200px;height:200px; margin-right:10px; border-radius: 50%' src="${name.media}" />
-            <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
-            ${name.summary}...</p>
-        </div>
-    </div>
-    <div class="row">&nbsp;</div>
+                <div class="row">
+                      <div class="col-md-12">
+                          <img style='float:left;width:200px;height:200px; margin-right:10px; border-radius: 50%' src="${name.media}" />
+                          <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
+                          ${name.summary}...</p>
+                      </div>
+                  </div>
+                  <div class="row">&nbsp;</div>
+                      `);
+            } else {
+                $("#news").append(`
 
+                <div class="row">
+                      <div class="col-md-12">
+                          <img style='float:left;width:200px;height:200px; margin-right:10px; border-radius: 50%' src="../screenshot.png" />
+                          <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
+                          ${name.summary}...</p>
+                      </div>
+                  </div>
+                  <div class="row">&nbsp;</div>
+                      `);
+            }
 
-
-
- 
-
-
-
-
-        
- 
-                            
-
-
-        `);
 
         });
       
