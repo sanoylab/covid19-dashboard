@@ -20,14 +20,20 @@
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-			
-                <a class="navbar-brand" href="index.html"><span>COVID 19 </span>Dashboard</a>
-               
+
+				<a class="navbar-brand" href="index.html"><span>Covid19</span> Dashboard</a>
+				<button class="btn btn-lg bg-danger" style="margin-top: 7px;" data-toggle="modal"
+					data-target="#modalVaccine">Vaccine Information</button>&nbsp;&nbsp;
+					<button class="btn btn-lg bg-danger" style="margin-top: 7px;" data-toggle="modal"
+					data-target="#modalThera">Therapeutics Information</button>
+					
+					<a href="index.html" style="padding: 12px;margin-top: 7px;" class="btn bgn-lg bg-success"><em class="fa fa-area-chart"></em> Interactive View</a>
 				<ul class="nav navbar-top-links navbar-right">
 					<li><a style="cursor: pointer;" id="am-btn">አማርኛ</a></li>
 					<li> | </li>
-					<li><a style="cursor: pointer;"id="en-btn">EN</a></li>
+					<li><a style="cursor: pointer;" id="en-btn">EN</a></li>
 				</ul>
+
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -178,7 +184,51 @@
 		</div>
 	</div>
 </div>
-	
+<div class="modal fade" id="modalVaccine" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Vaccine Information</h4>
+			</div>
+			<div class="modal-body">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					
+					
+					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modalThera" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Therapeutics Information</h4>
+			</div>
+			<div class="modal-body">
+				<div class="panel-group accordion" id="accordionThera" role="tablist" aria-multiselectable="true">
+					
+					
+					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+	</div>
+</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 	crossorigin="anonymous"></script>
@@ -240,6 +290,89 @@ btnE.addEventListener('click', ()=>{
 });
 	</script>
 
+<script>
+	const getVaccineInformation = async ()=>{
+		const response = await fetch('https://disease.sh/v3/covid-19/vaccine');
+		const data = await response.json();
+		console.log(data.data)
+		let vaccineHTML = ``;
+		data.data.forEach((item,index)=>{
+			 vaccineHTML += `
+		<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne`+index+`">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne`+index+`"
+									aria-expanded="true" aria-controls="collapseOne`+index+`">
+									<b style="color: #3331A9">${item.candidate} (${item.mechanism})</b>
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne`+index+`" class="panel-collapse collapse " role="tabpanel"
+							aria-labelledby="headingOne`+index+`">
+							<div class="panel-body">
+								<table>
+									<tr><td colspan="2"><p>${item.details}</p></td></tr>
+									<tr><td><b>Institutions:</b> </td><td>${item.institutions}</td></tr>
+									<tr><td><b>Mechanism:</b> </td><td>${item.mechanism}</td></tr>
+									<tr><td><b>Sponsors:</b> </td><td>${item.sponsors}</td></tr>
+									<tr><td><b>Trail Phase:</b> </td><td>${item.trialPhase}</td></tr>
+							   </table>
+							</div>
+						</div>
+					</div>
+		
+		
+		`;
 
+		const accordion = document.getElementById('accordion');
+		accordion.innerHTML = vaccineHTML;
+		})
+		
+	}	
+
+	const getTheraInformation = async ()=>{
+		const response = await fetch('https://disease.sh/v3/covid-19/therapeutics');
+		const data = await response.json();
+		
+		let theraHTML = ``;
+		data.data.forEach((item,index)=>{
+			 theraHTML += `
+		<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="1headingOne1`+index+`">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordionThera" href="#1collapseOne1`+index+`"
+									aria-expanded="true" aria-controls="1collapseOne1`+index+`">
+									<b style="color: #3331A9">${item.medicationClass} (${item.tradeName})</b>
+								</a>
+							</h4>
+						</div>
+						<div id="1collapseOne1`+index+`" class="panel-collapse collapse " role="tabpanel"
+							aria-labelledby="1headingOne1`+index+`">
+							<div class="panel-body">
+								<table>
+									<tr><td colspan="2"><p>${item.details}</p></td></tr>
+									<tr><td><b>Development Researcher:</b> </td><td>${item.developerResearcher}</td></tr>
+									
+									<tr><td><b>Sponsors:</b> </td><td>${item.sponsors}</td></tr>
+									<tr><td><b>Trail Phase:</b> </td><td>${item.trialPhase}</td></tr>
+							   <tr><td><b>Last Update:</b> </td><td>${item.lastUpdate}</td></tr>
+							   </table>
+							</div>
+						</div>
+					</div>
+		
+		
+		`;
+
+		const accordionThera = document.getElementById('accordionThera');
+		accordionThera.innerHTML = theraHTML;
+		})
+		
+	}	
+
+
+	getVaccineInformation();
+	getTheraInformation();	
+</script>
 </body>
 </html>

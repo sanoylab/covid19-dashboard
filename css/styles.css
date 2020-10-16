@@ -778,6 +778,7 @@ a.label:hover, a.label:focus {
   margin: 10px 10px 20px 10px; }
 
 @media (min-width: 768px) {
+
   .sidebar {
     display: block;
     position: fixed;
@@ -1291,6 +1292,9 @@ input:checked + .slider:before {
 
 
 @media only screen and (max-width: 600px) {
+  .btn{
+    display: none;
+  }
   .panel-widget .large {
   color: #373b45;
   font-size: 2.3em; }
