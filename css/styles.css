@@ -1286,14 +1286,21 @@ input:checked + .slider:before {
 }
 
 
-
+.mobile-modals{
+  display: none;
+}
 
 
 
 
 @media only screen and (max-width: 600px) {
-  .btn{
+  .desk{
     display: none;
+  }
+  .mobile-modals{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
   }
   .panel-widget .large {
   color: #373b45;
