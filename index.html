@@ -51,7 +51,7 @@
 		<div class="divider"></div>
 		<form role="search">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
+				<input type="text" class="form-control" id="txtSearch" onkeypress="searchCountry(this.value)" placeholder="Search">
 			</div>
 		</form>
 		<div id="country">
@@ -359,7 +359,7 @@
 		const getVaccineInformation = async ()=>{
 			const response = await fetch('https://disease.sh/v3/covid-19/vaccine');
 			const data = await response.json();
-			console.log(data.data)
+			
 			let vaccineHTML = ``;
 			data.data.forEach((item,index)=>{
 				 vaccineHTML += `
@@ -438,6 +438,11 @@
 
 		getVaccineInformation();
 		getTheraInformation();	
+	</script>
+	<script>
+		function searchCountry(val) {
+			console.log('test',val)
+		}
 	</script>
 </body>
 
