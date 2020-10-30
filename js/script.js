@@ -36,7 +36,7 @@ let checkColor = (num, type) => {
   }
 };
 let apiCountryData = async (countryName) => {
-  console.log(countryName)
+  
   let response = await fetch(
     "https://disease.sh/v3/covid-19/countries?sort=cases"
   ); //api end point
@@ -52,7 +52,7 @@ const searchKey = document.getElementById('txtSearch');
 apiCountryData()
   .then((res) => {
     let countries_data = res;
-    console.log(countries_data, 'yonas', searchKey.value);
+    
     
     let totalConfirmed = 0;
     let totalDeath = 0;
@@ -156,7 +156,7 @@ let countryDetail = (
   cases,
   flag
 ) => {
-  console.log(flag);
+  
   apiCountryMapData()
     .then((res) => {
       let countries_data = res;
@@ -194,7 +194,7 @@ let countryDetail = (
 };
 //let countryDetailMobile = (countryName, death, recover, active_cases, lat, long,cases,flag) => {
 let countryDetailMobile = (countryNameInfo) => {
-  console.log(countryNameInfo);
+
 
   apiCountryMapData()
     .then((res) => {
@@ -423,7 +423,7 @@ let apiNewsData = async () => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-        "x-rapidapi-key": "API KEY HERE", //
+        "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0", //
       },
     }
   ); //api end point
