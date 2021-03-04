@@ -1,12 +1,12 @@
 # COVID-19 DASHBOARD
 
-A simple Vanilla JavaScript application tracks Covid-19 
+A Vanilla JavaScript application tracks Covid-19 
 
-https://covid19-dashboard-viz.herokuapp.com/
+DEMO: https://covid19-dashboard-viz.herokuapp.com/
 
 I also created another tracker application, you can acces it on https://simple-covid19-tracker.herokuapp.com/
 
-![alt text](https://covid19-dashboard-viz.herokuapp.com/screenshot.png)
+![alt text](https://raw.githubusercontent.com/sanoylab/covid19-dashboard/master/screenshot.png)
 
 API Used: 
 
