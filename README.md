@@ -1,6 +1,6 @@
 # COVID-19 DASHBOARD
 
-A Vanilla JavaScript application tracks Covid-19 
+A Vanilla JavaScript application tracks Covid-19.
 
 DEMO: https://covid19-dashboard-viz.herokuapp.com/
 
