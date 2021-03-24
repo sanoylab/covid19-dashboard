@@ -335,22 +335,34 @@ let covidMap = (data, lat, long, zoom) => {
            <div class="statLine">
                   <div class="legendColor ongoing"></div>
                   <div class="stat total">Confirmed</div>
-                  <div class="statCount total">${row.stats.confirmed
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                  <div class="statCount total">
+                    
+                    ${row.stats.confirmed != null ? row.stats.confirmed
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
+                    
+                    </div>
                </div>
           
            <div class="statLine">
               <div class="legendColor recovered"></div>
               <div class="stat total">Recovered</div>
-              <div class="statCount total">${row.stats.recovered
+              <div class="statCount total">
+              ${row.stats.recovered != null ? row.stats.recovered
                 .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
+              
+             </div>
            </div>
            <div class="statLine">
               <div class="legendColor fatal"></div>
               <div class="stat total">Death</div>
-              <div class="statCount total">${row.stats.deaths}</div>
+              <div class="statCount total">
+              ${row.stats.deaths != null ? row.stats.deaths
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
+              
+            </div>
            </div>
            `,
       },
@@ -418,7 +430,7 @@ let apiNewsData = async () => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-        "x-rapidapi-key": "API KEY", //
+        "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0", //
       },
     }
   ); //api end point
