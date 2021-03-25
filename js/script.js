@@ -60,27 +60,25 @@ apiCountryData()
       $("#country_list-table").append(`
         <tr style="cursor:pointer">
         <td style="text-align:left; color:#337ab7"><div style="display: flex;align-item: center;">
-        <img class="img-responsive flag" style="width: 30px; height: 30px; margin-left: 10px; border-radius: 50%" src="${
-          name.countryInfo.flag
+        <img class="img-responsive flag" style="width: 30px; height: 30px; margin-left: 10px; border-radius: 50%" src="${name.countryInfo.flag
         }"> 
         
-        <b style="padding-top: 5px; padding-left: 10px;"> <a onClick="return tableDetail('${
-          name.countryInfo.flag
+        <b style="padding-top: 5px; padding-left: 10px;"> <a onClick="return tableDetail('${name.countryInfo.flag
         }','${name.country}','${name.cases}','${name.active}','${name.recovered}','${name.deaths}','${name.todayCases}','${name.todayDeaths}','${name.tests}')">${name.country}</a></b></div></td>
         <td><b>${name.cases
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
         <td ${checkColor(
-          name.todayCases,
-          "c"
-        )}><b>${Number(name.todayCases) > 0 ? "+" + name.todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : ""}</b></td>
+            name.todayCases,
+            "c"
+          )}><b>${Number(name.todayCases) > 0 ? "+" + name.todayCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : ""}</b></td>
         <td><b>${name.deaths
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
         <td ${checkColor(
-          name.todayDeaths,
-          "d"
-        )}><b>${Number(name.todayDeaths) > 0 ? "+" + name.todayDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : ""}</b></td>
+            name.todayDeaths,
+            "d"
+          )}><b>${Number(name.todayDeaths) > 0 ? "+" + name.todayDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : ""}</b></td>
         <td><b>${name.recovered
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
@@ -90,42 +88,36 @@ apiCountryData()
         <td><b>${name.critical
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td><b>${
-          name.casesPerOneMillion == null ? "" : name.casesPerOneMillion
+        <td><b>${name.casesPerOneMillion == null ? "" : name.casesPerOneMillion
         }</b></td>
-        <td><b>${
-          name.deathsPerOneMillion == null ? "" : name.deathsPerOneMillion
+        <td><b>${name.deathsPerOneMillion == null ? "" : name.deathsPerOneMillion
         }</b></td>
         <td><b>${name.tests
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</b></td>
-        <td><b>${
-          name.testsPerOneMillion == null ? "" : name.casesPerOneMillion
+        <td><b>${name.testsPerOneMillion == null ? "" : name.casesPerOneMillion
         }</b></td>
         
         </tr>`);
 
       $("#country").append(`
          <div class="areas">
-            <div id="${
-              name.countryInfo._id
-            }" class="area" onClick="return countryDetail('${name.country}', '${name.deaths}', '${name.recovered}', '${name.active}', '${name.countryInfo.lat}', '${name.countryInfo.long}','${name.cases}','${name.countryInfo.flag}')">
+            <div id="${name.countryInfo._id
+        }" class="area" onClick="return countryDetail('${name.country}', '${name.deaths}', '${name.recovered}', '${name.active}', '${name.countryInfo.lat}', '${name.countryInfo.long}','${name.cases}','${name.countryInfo.flag}')">
                <div class="areaName" title="${name.country}">
-                  <img src="${
-                    name.countryInfo.flag
-                  }" style="width:30px; height: 30px; border-radius: 50%;"><span>${name.country}</span></div>
+                  <img src="${name.countryInfo.flag
+        }" style="width:30px; height: 30px; border-radius: 50%;"><span>${name.country}</span></div>
                   <div class="areaTotal">
                     <div class="secondaryInfo">${name.cases
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                   </div>
                 </div>
             </div>`);
       let parameter = `${name.country}, ${name.deaths}, ${name.recovered}, ${name.active}, ${name.countryInfo.lat}, ${name.countryInfo.long},${name.cases},${name.countryInfo.flag}`;
       $("#countryMobile").append(`
-            <option style="background-image: url('${
-              name.countryInfo.flag
-            }');" value="${parameter.toString()}">${name.country}</option>
+            <option style="background-image: url('${name.countryInfo.flag
+        }');" value="${parameter.toString()}">${name.country}</option>
 				
             `);
 
@@ -288,7 +280,7 @@ let tableDetail = (
 };
 
 function onEachFeature(feature, layer) {
-  layer.on("mouseover", function () {});
+  layer.on("mouseover", function () { });
   if (feature.properties && feature.properties.popupContent) {
     layer.on("mouseover", function () {
       layer.openPopup();
@@ -327,9 +319,8 @@ let covidMap = (data, lat, long, zoom) => {
         popupContent: `
            <div class="titleInfoBox">
           
-             <span>${row.country != null ? row.country.toUpperCase() : ""} ${
-          row.province != null ? " - " + row.province : ""
-        } </span> 
+             <span>${row.country != null ? row.country.toUpperCase() : ""} ${row.province != null ? " - " + row.province : ""
+          } </span> 
            </div>
        
            <div class="statLine">
@@ -338,8 +329,8 @@ let covidMap = (data, lat, long, zoom) => {
                   <div class="statCount total">
                     
                     ${row.stats.confirmed != null ? row.stats.confirmed
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
                     
                     </div>
                </div>
@@ -349,8 +340,8 @@ let covidMap = (data, lat, long, zoom) => {
               <div class="stat total">Recovered</div>
               <div class="statCount total">
               ${row.stats.recovered != null ? row.stats.recovered
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
               
              </div>
            </div>
@@ -359,8 +350,8 @@ let covidMap = (data, lat, long, zoom) => {
               <div class="stat total">Death</div>
               <div class="statCount total">
               ${row.stats.deaths != null ? row.stats.deaths
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0"}
               
             </div>
            </div>
@@ -380,14 +371,14 @@ let covidMap = (data, lat, long, zoom) => {
   });
   L.tileLayer(
     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
-      mapboxAccessToken,
+    mapboxAccessToken,
     {
       id: "mapbox/light-v9",
       tileSize: 512,
       zoomOffset: -1,
     }
   ).addTo(map);
-  map.on("mouseover", function (ev) {});
+  map.on("mouseover", function (ev) { });
   L.geoJson(geojson, {
     onEachFeature: onEachFeature,
     pointToLayer: function (feature, latlng) {
@@ -430,7 +421,7 @@ let apiNewsData = async () => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-        "x-rapidapi-key": "API KEY", //
+        "x-rapidapi-key": "7341296eb8msh5dc5fabdd040449p14cc9bjsn1ba24667d2f0", //
       },
     }
   ); //api end point
@@ -439,33 +430,35 @@ let apiNewsData = async () => {
 apiNewsData()
   .then((res) => {
     let news_data = res;
+    let i = 0;
 
     news_data.articles.forEach(function (name) {
-      if (name.media) {
+      if(i<4){
+      if (name.media) {      
         $("#news").append(`
-
-                <div class="row">
-                      <div class="col-md-12">
-                          <img style='float:left;width:200px;height:200px; margin-right:10px; border-radius: 50%' src="${name.media}" />
-                          <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
-                          ${name.summary}...</p>
-                      </div>
-                  </div>
-                  <div class="row">&nbsp;</div>
-                      `);
+        <div class="col-md-3">
+				  <div class="panel panel-default articles">         
+					  <div class="panel-body timeline-container">
+            <img style='float:left;width:100%; margin-right:10px; margin-bottom: 20px;' src="${name.media}" />
+            <p><h3><a href="${name.link}" target="_blank">${name.title}</a></h3><br>
+           </p>
+            </div>
+				 </div>
+			 </div> `);
       } else {
         $("#news").append(`
+        <div class="col-md-3">
+        <div class="panel panel-default articles">         
+          <div class="panel-body timeline-container">
+          <img style='float:left;width:200px;height:200px; margin-right:10px; ' src="../screenshot.png" />
+          <p><h3><a href="${name.link}" target="_blank">${name.title}</a></h3><br>
+         </p>
+          </div>
+       </div>
+     </div>`);
 
-                <div class="row">
-                      <div class="col-md-12">
-                          <img style='float:left;width:200px;height:200px; margin-right:10px; border-radius: 50%' src="../screenshot.png" />
-                          <p> <h2><a href="${name.link}" target="_blank">${name.title}</a></h2><br>
-                          ${name.summary}...</p>
-                      </div>
-                  </div>
-                  <div class="row">&nbsp;</div>
-                      `);
-      }
+      } i++;
+    }
     });
   })
   .catch();
