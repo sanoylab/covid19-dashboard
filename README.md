@@ -2,7 +2,7 @@
 
 A Vanilla JavaScript application tracks Covid-19.
 
-DEMO: https://covid19-dashboard-viz.herokuapp.com/
+DEMO: https://covid19-dashboard-coe2.onrender.com/table.html
 
 I also created another tracker application, you can acces it on https://covid19-dashboard-coe2.onrender.com/table.html 
 
